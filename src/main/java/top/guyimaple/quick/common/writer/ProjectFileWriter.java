@@ -10,6 +10,7 @@ import java.io.IOException;
  */
 public interface ProjectFileWriter {
 
-    void write(ProjectType type, String fileName, byte[] content) throws IOException;
+    void write(ProjectType type, String fileName, byte[] content);
 
+    void createDirectory(ProjectType type, String name);
 }

@@ -1,6 +1,9 @@
 package top.guyimaple.quick.common.entry;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 import top.guyimaple.quick.common.writer.ProjectFileWriter;
 
 /**
@@ -8,7 +11,9 @@ import top.guyimaple.quick.common.writer.ProjectFileWriter;
  * @author guyi
  * @date 2024/8/30
  */
-@Data
+@Getter
+@ToString
+@AllArgsConstructor
 public class Project {
 
     /**
