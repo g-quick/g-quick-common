@@ -1,9 +1,8 @@
 package top.guyimaple.quick.common.current;
 
-import org.springframework.stereotype.Component;
+import lombok.Getter;
 import top.guyimaple.quick.common.entry.Project;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -12,7 +11,7 @@ import java.util.Optional;
  * @author guyi
  * @date 2024/8/30
  */
-@Component
+@Getter
 public class CurrentContext {
 
     private static final String PROJECT_KEY = "project";
@@ -20,25 +19,15 @@ public class CurrentContext {
     /**
      * 当前项目
      */
-    private static ThreadLocal<Map<String, Object>> CONTEXT = new ThreadLocal<>();
-
-    public void clear() {
-        CONTEXT.remove();
-    }
-
-    public Map<String, Object> getContext() {
-        return Optional.ofNullable(CONTEXT.get()).orElseGet(Collections::emptyMap);
-    }
+    private final Map<String, Object> context = new HashMap<>();
 
     public <T> Optional<T> get(String key, Class<T> type) {
-        return Optional.ofNullable(CONTEXT.get())
+        return Optional.ofNullable(context.get(key))
                 .map(type::cast);
     }
 
     public void set(String key, Object value) {
-        Map<String, Object> map = Optional.ofNullable(CONTEXT.get()).orElseGet(HashMap::new);
-        map.put(key, value);
-        CONTEXT.set(map);
+        context.put(key, value);
     }
 
     public Optional<Project> getProject() {

@@ -3,7 +3,6 @@ package top.guyimaple.quick.common.executor.template;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import org.springframework.stereotype.Component;
 import top.guyimaple.quick.common.current.CurrentContext;
 
 import java.io.StringWriter;
@@ -15,7 +14,6 @@ import java.util.Optional;
  * @author guyi
  * @date 2024/8/30
  */
-@Component
 public class TemplateExecutor {
 
     private final CurrentContext current;
